@@ -19,7 +19,8 @@ int _putchar(char c)
  */
 int longint(int n)
 {
-	static int c = 0;
+	static int c = 1;
+
 	c++;
 	if (n < 0)
 	{
@@ -30,7 +31,7 @@ int longint(int n)
 		longint(n / 10);
 
 	_puthcar((n % 10) + '0');
-	return (c);
+	return (c - 1);
 }
 /**
  * _printf - name
@@ -64,9 +65,8 @@ int _printf(const char *format, ...)
 					s = va_arg(prnt, char *);
 					if (s != NULL)
 					{
-						for (k = 0; s[k]; k++, counter++)
-							_putchar(s[k]);
-					}
+					for (k = 0; s[k]; k++, counter++)
+						_putchar(s[k]); }
 					break;
 				case 'i':
 					j = va_arg(prnt, int);
@@ -75,16 +75,10 @@ int _printf(const char *format, ...)
 				default:
 					_putchar(format[i]);
 					counter++;
-					break;
-			}
-			i++;
-		}
+					break; }
+			i++; }
 		else
-		{
-			putchar(format[i]);
-			i++;
-		}
-	}
+		{ putchar(format[i]);
+			i++; } }
 	va_end(prnt);
-	return (counter);
-}
+	return (counter); }
