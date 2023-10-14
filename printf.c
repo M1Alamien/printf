@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stddef.h>
 #include "main.h"
 /**
  * _putchar - writes the character c to stdout
@@ -30,7 +31,7 @@ int longint(int n)
 	if (n / 10)
 		longint(n / 10);
 
-	_puthcar((n % 10) + '0');
+	_putchar((n % 10) + '0');
 	return (c - 1);
 }
 /**
