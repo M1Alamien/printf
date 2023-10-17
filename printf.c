@@ -1,85 +1,62 @@
-#include <stdio.h>
-#include <stddef.h>
 #include "main.h"
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-/**
- * longint - name
- * @n: int from main
- *
- * prints long int using _puchar
- * Return: lenght of int
- */
-int longint(int n)
-{
-	static int c = 1;
 
-	c++;
-	if (n < 0)
-	{
-		_putchar('-');
-		n = -n;
-	}
-	if (n / 10)
-		longint(n / 10);
-
-	_putchar((n % 10) + '0');
-	return (c - 1);
-}
+void print_buff(char buff[], int *bi);
 /**
  * _printf - name
  * @format: string from main
  *
- * produces output according to a format
+ * printf
  * Return: counter
  */
 int _printf(const char *format, ...)
 {
-	int i, j, k, counter = 0;
-	char *s;
+	int i, counter = 0, c2 = 0;
+	int flags, width, prec, size, bi = 0;
+	char buff[BUFF_SIZE];
 	va_list prnt;
 
+	if (format = NULL)
+		return (-1);
 	va_start(prnt, format);
-	while (format && format[i])
+	for (i =0; format && format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
+		if (format[i] != '%')
 		{
-			switch (format[i + 1])
+			buff[bi++] = format [i];
+			if (bi == BUFFSIZE)
 			{
-				case 'c':
-					_putchar(va_arg(prnt, int));
-					counter++;
-					break;
-				case 'd':
-					j = va_arg(prnt, int);
-					counter += longint(j);
-					break;
-				case 's':
-					s = va_arg(prnt, char *);
-					if (s != NULL)
-					{
-					for (k = 0; s[k]; k++, counter++)
-						_putchar(s[k]); }
-					break;
-				case 'i':
-					j = va_arg(prnt, int);
-					counter += longint(j);
-					break;
-				default:
-					_putchar(format[i]);
-					counter++;
-					break; }
-			i++; }
+				print_buff(buff, &bi);
+			}
+			counter++;
+		}
 		else
-		{ putchar(format[i]);
-			i++; } }
+		{
+			print_buff(buff, &bi);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, prnt);
+			prec = get_prec(format, &i, prnt);
+			size = get_size(format, &i);
+			++i;
+			c2 = hp(format, &i, prnt, buff, flags, width, prec, size);;
+			if (c2 == -1)
+				return (-1);
+			counter += c2;
+		}
+	}
+	print_buff(buff, &bi);
 	va_end(prnt);
-	return (counter); }
+	return (counter);
+}
+/**
+ * print_buff - name
+ * @buff: array from main
+ * @bi: @ of int from main
+ *
+ * putchar with extras
+ * Return: void
+ */
+void print_buff(char buff[], int *bi)
+{
+	if (bi > 0)
+		write(1, &buff[0], *bi);
+	*bi = 0;
