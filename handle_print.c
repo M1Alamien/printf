@@ -22,7 +22,8 @@ int handle_prnt(const char *fmt, int *i, va_list prnt, char buff[], int flags, i
 		{'X', prnt_hexu}, {'p', prnt_p}, {'S', prnt_non},
 		{'r', prnt_rev}, {'R', prnt_rot13}, {'\0', NULL} };
 
-	for (ii = 0; fmt_types[i].fmt != '\0'; i++)
+	for (ii = 0; fmt_types[ii].fmt != '\0'; i++)
+	{
 		if (fmt[*i] == fmt_types[ii].fmt)
 			return (fmt_types[ii].fn(prnt, buff, flags, width, prec, size));
 
@@ -31,7 +32,7 @@ int handle_prnt(const char *fmt, int *i, va_list prnt, char buff[], int flags, i
 			if (fmt[*i] == '\0')
 				return (-1);
 			ulen += write(1, "%%", 1);
-			if (fmt[*ind - 1] == ' ')
+			if (fmt[*i - 1] == ' ')
 				ulen += write(1, " ", 1);
 			else if (width)
 			{
@@ -45,5 +46,6 @@ int handle_prnt(const char *fmt, int *i, va_list prnt, char buff[], int flags, i
 			ulen += write(1, &fmt[*i], 1);
 			return (ulen);
 		}
+	}
 		return (counter);
 }

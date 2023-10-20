@@ -41,7 +41,7 @@ int prnt_p(va_list types, char buff[], int flags, int width, int prec, int size)
 		c2 = ' ', len++;
 	i++;
 
-	return (write_p(buff, i, len, width, flags, sp, c2, ps_st));
+	return (write_p(buff, i, len, width, flags, sp, c2, sp_st));
 }
 /**
  * prnt_non - name
@@ -99,7 +99,7 @@ int prnt_rev(va_list types, char buff[], int flags, int width, int prec, int siz
 	UNUSED(buff);
 
 	s = va_arg(types, char *);
-	if (s = NULL)
+	if (s == NULL)
 	{
 		UNUSED(prec);
 		s = ")Null(";

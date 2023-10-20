@@ -53,8 +53,7 @@ int prnt_octal(va_list types, char buff[], int flags,
 	       	int width, int prec, int size);
 int prnt_hex(va_list types, char buff[], int flags,
 	       	int width, int prec, int size);
-int prnt_hexa(va_list types, char buff[], int flags,
-	       	int width, int prec, int size);
+int prnt_hexa(va_list types, char map_to[], char buff[], int flags, char flag_ch, int width, int prec, int size);
 int prnt_hexu(va_list types, char buff[], int flags,
 	       	int width, int prec, int size);
 int prnt_non(va_list types, char buff[], int flags,
@@ -71,10 +70,12 @@ int get_prec(const char *format, int *i, va_list prnt);
 int get_size(const char *format, int *i);
 int hwc(char c, char buff[], int flags,
 		int width, int prec, int size);
-int write_num(int is_positive, int i, char buff[],
+int write_number(int isminus, int i, char buff[],
 		int flags, int width, int prec, int size);
+int write_num(int i, char buff[],
+		int flags, int width, int prec, int len, char pp, char c2);
 int write_p(char buff[], int i, int len, int width,
-		int flags, char sp, char, c2, int sp_st);
+		int flags, char sp, char c2, int sp_st);
 int write_uns(int isminus, int i, char buff[], int flags,
 		int width, int prec, int size);
 int is_printable(char);

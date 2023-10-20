@@ -110,7 +110,7 @@ int prnt_int(va_list types, char buff[], int flags, int width, int prec, int siz
 	long int li = va_arg(types, long int);
 	unsigned long int n;
 
-	li = convert_size_number(n, size);
+	li = convert_size_number(li, size);
 	if (li == 0)
 		buff[i--] = '0';
 	buff[BUFF_SIZE - 1] = '\0';
@@ -123,10 +123,10 @@ int prnt_int(va_list types, char buff[], int flags, int width, int prec, int siz
 	while (n > 0)
 	{
 		buff[i--] = (n % 10) + '0';
-		num /= 10;
+		n /= 10;
 	}
 	i++;
-	return (write_num(isminus, i, buff, flags, width, prec, size));
+	return (write_number(isminus, i, buff, flags, width, prec, size));
 }
 /**
  * prnt_bi - name

@@ -8,7 +8,7 @@
  * calcs prec for printing
  * Return: prec
  */
-int get_perc(const char *format, int *i, va_list prnt)
+int get_prec(const char *format, int *i, va_list prnt)
 {
 	int ci = *i + 1;
 	int prec = -1;
@@ -23,7 +23,7 @@ int get_perc(const char *format, int *i, va_list prnt)
 			prec *= 10;
 			prec += format[ci] - '0';
 		}
-		else if
+		else if (format[ci] == '*')
 		{
 			ci++;
 			prec = va_arg(prnt, int);

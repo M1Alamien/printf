@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	char buff[BUFF_SIZE];
 	va_list prnt;
 
-	if (format = NULL)
+	if (format == NULL)
 		return (-1);
 	va_start(prnt, format);
 	for (i =0; format && format[i] != '\0'; i++)
@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			buff[bi++] = format [i];
-			if (bi == BUFFSIZE)
+			if (bi == BUFF_SIZE)
 			{
 				print_buff(buff, &bi);
 			}
@@ -37,7 +37,8 @@ int _printf(const char *format, ...)
 			prec = get_prec(format, &i, prnt);
 			size = get_size(format, &i);
 			++i;
-			c2 = hp(format, &i, prnt, buff, flags, width, prec, size);;
+			c2 = handle_prnt(format, &i, prnt, buff,
+					flags, width, prec, size);
 			if (c2 == -1)
 				return (-1);
 			counter += c2;
@@ -57,6 +58,7 @@ int _printf(const char *format, ...)
  */
 void print_buff(char buff[], int *bi)
 {
-	if (bi > 0)
+	if (*bi > 0)
 		write(1, &buff[0], *bi);
 	*bi = 0;
+}

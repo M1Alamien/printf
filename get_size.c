@@ -7,7 +7,7 @@
  * calc size
  * Return: size
  */
-int get_size(const char *format, int i)
+int get_size(const char *format, int *i)
 {
 	int ci = *i + 1;
 	int size = 0;
