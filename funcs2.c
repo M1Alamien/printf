@@ -11,7 +11,8 @@
  * prints unsigned int
  * Return: num of char printed
  */
-int prnt_uns(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_uns(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	int i = BUFF_SIZE - 2;
 	unsigned long int uli = va_arg(types, unsigned long int);
@@ -40,7 +41,8 @@ int prnt_uns(va_list types, char buff[], int flags, int width, int prec, int siz
  * prints unsigned int in octal
  * Return: num of char printed
  */
-int prnt_octal(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_octal(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	int i = BUFF_SIZE - 2;
 	unsigned long int uli = va_arg(types, unsigned long int);
@@ -73,7 +75,8 @@ int prnt_octal(va_list types, char buff[], int flags, int width, int prec, int s
  * prints unsigned int in hex
  * Return: num of char printed
  */
-int prnt_hex(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_hex(va_list types, char buff[], int flags,
+		int width, int prec, int size)
 {
 	return (prnt_hexa(types, "0123456789abcdef", buff,
 		flags, 'x', width, prec, size));
@@ -90,7 +93,8 @@ int prnt_hex(va_list types, char buff[], int flags, int width, int prec, int siz
  * prints unsigned int in hex
  * Return: num of char printed
  */
-int prnt_hexu(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_hexu(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	return (prnt_hexa(types, "0123456789ABCDEF", buff,
 		flags, 'X', width, prec, size));
@@ -103,11 +107,14 @@ int prnt_hexu(va_list types, char buff[], int flags, int width, int prec, int si
  * @width: width
  * @prec: precision
  * @size: size
+ * @map_to: array
+ * @flag_ch: char
  *
  * prints unsigned int in hex
  * Return: num of char printed
  */
-int prnt_hexa(va_list types,char map_to[], char buff[], int flags, char flag_ch, int width, int prec, int size)
+int prnt_hexa(va_list types, char map_to[], char buff[],
+		int flags, char flag_ch, int width, int prec, int size)
 {
 	int i = BUFF_SIZE - 2;
 	unsigned long int uli = va_arg(types, unsigned long int);

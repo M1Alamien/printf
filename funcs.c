@@ -11,7 +11,8 @@
  * prints ch
  * Return: num of ch printed
  */
-int prnt_ch(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_ch(va_list types, char buff[], int flags,
+		int width, int prec, int size)
 {
 	char ch = va_arg(types, int);
 
@@ -29,7 +30,8 @@ int prnt_ch(va_list types, char buff[], int flags, int width, int prec, int size
  * prints s
  * Return: num of ch in s printed
  */
-int prnt_s(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_s(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	int i, len = 0;
 	char *s = va_arg(types, char *);
@@ -81,7 +83,8 @@ int prnt_s(va_list types, char buff[], int flags, int width, int prec, int size)
  * prints %
  * Return: num of % printed
  */
-int prnt_pc(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_pc(va_list types, char buff[], int flags,
+		int width, int prec, int size)
 {
 	UNUSED(buff);
 	UNUSED(flags);
@@ -103,7 +106,8 @@ int prnt_pc(va_list types, char buff[], int flags, int width, int prec, int size
  * prints int
  * Return: num of char printed
  */
-int prnt_int(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_int(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	int i = BUFF_SIZE - 2;
 	int isminus = 0;
@@ -140,7 +144,8 @@ int prnt_int(va_list types, char buff[], int flags, int width, int prec, int siz
  * prints unsigned int
  * Return: num of char printed
  */
-int prnt_bi(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_bi(va_list types, char buff[], int flags,
+		int width, int prec, int size)
 {
 	unsigned int i, ii, n, sum;
 	unsigned int b[32];
@@ -166,6 +171,7 @@ int prnt_bi(va_list types, char buff[], int flags, int width, int prec, int size
 		if (n == 31 || sum)
 		{
 			char c = '0' + b[n];
+
 			write(1, &c, 1);
 			count++;
 		}

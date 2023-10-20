@@ -11,7 +11,8 @@
  * prints value of p
  * Return: num of char printed
  */
-int prnt_p(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_p(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	char c2 = 0, sp = ' ';
 	char map_to[] = "0123456789abcdef";
@@ -50,14 +51,18 @@ int prnt_p(va_list types, char buff[], int flags, int width, int prec, int size)
  * @width: width
  * @prec: precision
  * @size: size
+ * @types: list
+ *
  *
  * prints assci code of non printable chars
- * num of char printed
+ * Return: num of char printed
  */
-int prnt_non(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_non(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	int i = 0, off = 0;
 	char *s = va_arg(types, char *);
+
 	UNUSED(prec);
 	UNUSED(size);
 	UNUSED(flags);
@@ -88,7 +93,8 @@ int prnt_non(va_list types, char buff[], int flags, int width, int prec, int siz
  * prints rev string
  * Return: num of char printed
  */
-int prnt_rev(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_rev(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	char *s;
 	int i, count = 0;
@@ -111,6 +117,7 @@ int prnt_rev(va_list types, char buff[], int flags, int width, int prec, int siz
 	for (i = i - 1; i >= 0; i--)
 	{
 		char c = s[i];
+
 		write(1, &c, 1);
 		count++;
 	}
@@ -128,7 +135,8 @@ int prnt_rev(va_list types, char buff[], int flags, int width, int prec, int siz
  * prints string in rot13
  * Return:num of char printed
  */
-int prnt_rot13(va_list types, char buff[], int flags, int width, int prec, int size)
+int prnt_rot13(va_list types, char buff[],
+		int flags, int width, int prec, int size)
 {
 	char *s;
 	char c;

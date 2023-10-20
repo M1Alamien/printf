@@ -8,11 +8,13 @@
  * @width: width
  * @prec: precision
  * @size: size
+ * @prnt: list
  *
  * prints args to diff types
  * Return: 1 or 2
  */
-int handle_prnt(const char *fmt, int *i, va_list prnt, char buff[], int flags, int width, int prec, int size)
+int handle_prnt(const char *fmt, int *i, va_list prnt,
+		char buff[], int flags, int width, int prec, int size)
 {
 	int ii, ulen = 0, counter = -1;
 	fmt_t fmt_types[] = {

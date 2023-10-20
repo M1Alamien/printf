@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * get_width - name
- * @fomat: string from main
+ * @format: string from main
  * @i: int
  * @prnt: list
  *

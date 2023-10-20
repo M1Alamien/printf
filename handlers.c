@@ -107,8 +107,7 @@ int write_num(int i, char buff[], int flags, int width,
 		{
 			if (c2)
 				buff[--i] = c2;
-			return (write(1, &buff[i], len) + write(1,
-						&buff[1], ii - 1));
+			return (write(1, &buff[i], len) + write(1, &buff[1], ii - 1));
 		}
 		else if (!(flags & F_MINUS) && pp == ' ')
 		{

@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * get_perc - name
+ * get_prec - name
  * @format: string from main
  * @i: int
  * @prnt: list
@@ -13,7 +13,7 @@ int get_prec(const char *format, int *i, va_list prnt)
 	int ci = *i + 1;
 	int prec = -1;
 
-	if(format[ci] != '.')
+	if (format[ci] != '.')
 		return (prec);
 	prec = 0;
 	for (ci += 1; format[ci] != '\0'; ci++)

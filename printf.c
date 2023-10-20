@@ -18,11 +18,11 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(prnt, format);
-	for (i =0; format && format[i] != '\0'; i++)
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
-			buff[bi++] = format [i];
+			buff[bi++] = format[i];
 			if (bi == BUFF_SIZE)
 			{
 				print_buff(buff, &bi);
